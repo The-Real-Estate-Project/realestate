@@ -35,7 +35,11 @@ const SearchBar = ({ initialCategory = 'buy' }) => {
 
   const handleSearch = () => {
     const params = new URLSearchParams();
-    if (initialCategory) params.set('category', initialCategory);
+    // Only lock to a category when the user is purely browsing (no text, no type selected).
+    // When they type a location or pick a property type, search across all categories so
+    // results are never silently excluded by the home-page tab.
+    const isTextSearch = searchText.trim() || propertyType;
+    if (initialCategory && !isTextSearch) params.set('category', initialCategory);
     if (propertyType) params.set('propertyType', propertyType);
     if (selectedUnitTypes.length > 0) params.set('unitType', selectedUnitTypes[0]);
     if (searchText.trim()) params.set('search', searchText.trim());
