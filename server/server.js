@@ -54,13 +54,13 @@ const allowedOrigins = [
 ].filter(Boolean);
 
 app.use(cors({
-  origin: (origin, callback) => {
-    // Allow requests with no origin (curl, Postman, server-to-server)
-    if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
-    callback(new Error(`CORS: origin ${origin} not allowed`));
-  },
-  credentials: true,
-}));
+    origin: [
+      'http://localhost:5173',
+      'https://demohomes.netlify.app'  // add this
+    ],
+    credentials: true
+  }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
