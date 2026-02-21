@@ -10,13 +10,21 @@ const app = express();
 
 // ─── Database connection ───────────────────────────────────────────────────
 const startDB = async () => {
+  const isProduction = process.env.NODE_ENV === 'production';
   const uri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/realestate_bengaluru';
 
   try {
     await mongoose.connect(uri);
     console.log(`✅ MongoDB Connected → ${uri}`);
   } catch (err) {
-    // Fallback to in-memory MongoDB if local MongoDB is not available
+    // In production, never fall back — exit immediately with a clear message
+    if (isProduction) {
+      console.error('❌ MongoDB connection failed. Check your MONGO_URI environment variable.');
+      console.error(err.message);
+      process.exit(1);
+    }
+
+    // Development only: fall back to in-memory MongoDB
     console.log('⚠️  Local MongoDB not available, falling back to in-memory DB...');
     try {
       const { MongoMemoryServer } = require('mongodb-memory-server');
