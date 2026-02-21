@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Mic, Navigation, ChevronDown, MapPin } from 'lucide-react';
+import { Search, Mic, ChevronDown, MapPin } from 'lucide-react';
 import { UNIT_TYPES, BENGALURU_AREAS } from '../utils/helpers';
 
 const SearchBar = ({ initialCategory = 'buy' }) => {
@@ -101,16 +101,6 @@ const SearchBar = ({ initialCategory = 'buy' }) => {
     if (e.key === 'Enter') handleSearch();
   };
 
-  const handleNearMe = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(() => {
-        const params = new URLSearchParams();
-        if (initialCategory) params.set('category', initialCategory);
-        navigate(`/properties?${params.toString()}`);
-      });
-    }
-  };
-
   const getDropdownLabel = () => {
     if (!propertyType && selectedUnitTypes.length === 0) return 'Property Type';
     if (propertyType && selectedUnitTypes.length === 0) {
@@ -188,14 +178,6 @@ const SearchBar = ({ initialCategory = 'buy' }) => {
           )}
         </div>
 
-        {/* Near Me button */}
-        <button
-          onClick={handleNearMe}
-          className="hidden sm:flex items-center gap-2 bg-primary-100 text-primary-700 px-4 py-2.5 rounded-xl mx-2 text-sm font-semibold hover:bg-primary-200 transition-colors whitespace-nowrap"
-        >
-          <Navigation className="w-4 h-4" />
-          <span>Near Me</span>
-        </button>
 
         {/* Mic icon */}
         <button className="p-3 hover:bg-gray-100 rounded-full mx-1 transition-colors" aria-label="Voice search">
