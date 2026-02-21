@@ -140,6 +140,10 @@ const createProperty = async (req, res) => {
       ? req.files['floorPlans'].map(mapFilePath)
       : [];
 
+    const videos = req.files?.['videos']
+      ? req.files['videos'].map(mapFilePath)
+      : [];
+
     const property = new Property({
       title,
       category,
@@ -167,6 +171,7 @@ const createProperty = async (req, res) => {
         : [],
       photos,
       floorPlans,
+      videos,
       mapEmbed,
       mapLink,
       isNewLaunch: isNewLaunch === 'true' || isNewLaunch === true,
@@ -229,6 +234,10 @@ const updateProperty = async (req, res) => {
       const newFloorPlans = req.files['floorPlans'].map(mapFilePath);
       updateData.floorPlans = [...(property.floorPlans || []), ...newFloorPlans];
     }
+    if (req.files?.['videos']) {
+      const newVideos = req.files['videos'].map(mapFilePath);
+      updateData.videos = [...(property.videos || []), ...newVideos];
+    }
 
     // Parse numeric fields
     if (updateData.priceMin) updateData.priceMin = Number(updateData.priceMin);
@@ -259,8 +268,8 @@ const deleteProperty = async (req, res) => {
       return res.status(404).json({ message: 'Property not found' });
     }
 
-    // Delete all associated images
-    const allFiles = [...(property.photos || []), ...(property.floorPlans || [])];
+    // Delete all associated images and videos
+    const allFiles = [...(property.photos || []), ...(property.floorPlans || []), ...(property.videos || [])];
     await Promise.all(allFiles.map(deleteStoredFile));
 
     await Property.findByIdAndDelete(req.params.id);

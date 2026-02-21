@@ -93,6 +93,7 @@ const propertySchema = new mongoose.Schema(
     // Media
     photos: [String],
     floorPlans: [String],
+    videos: [String],
     mapEmbed: {
       type: String,
     },

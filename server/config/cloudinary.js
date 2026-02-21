@@ -7,12 +7,21 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+// Single storage handles both images and videos — resource_type is set dynamically
 const storage = new CloudinaryStorage({
   cloudinary,
-  params: {
-    folder: 'demohomes-v1',
-    allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
-    transformation: [{ quality: 'auto', fetch_format: 'auto' }],
+  params: (req, file) => {
+    const isVideo = file.mimetype.startsWith('video/');
+    return {
+      folder: isVideo ? 'demohomes-v1/videos' : 'demohomes-v1',
+      resource_type: isVideo ? 'video' : 'image',
+      ...(isVideo
+        ? { allowed_formats: ['mp4', 'mov', 'avi', 'webm', 'mkv'] }
+        : {
+            allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
+            transformation: [{ quality: 'auto', fetch_format: 'auto' }],
+          }),
+    };
   },
 });
 
@@ -29,7 +38,12 @@ const getPublicId = (url) => {
 const deleteFile = async (url) => {
   try {
     const publicId = getPublicId(url);
-    if (publicId) await cloudinary.uploader.destroy(publicId);
+    if (publicId) {
+      const isVideo = url.includes('/video/upload/');
+      await cloudinary.uploader.destroy(publicId, {
+        resource_type: isVideo ? 'video' : 'image',
+      });
+    }
   } catch (err) {
     console.error('Cloudinary delete error:', err.message);
   }

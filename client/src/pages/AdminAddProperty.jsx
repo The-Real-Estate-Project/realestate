@@ -74,8 +74,10 @@ const AdminAddProperty = () => {
   const [loading, setLoading] = useState(false);
   const [photoFiles, setPhotoFiles] = useState([]);
   const [floorPlanFiles, setFloorPlanFiles] = useState([]);
+  const [videoFiles, setVideoFiles] = useState([]);
   const [existingPhotos, setExistingPhotos] = useState([]);
   const [existingFloorPlans, setExistingFloorPlans] = useState([]);
+  const [existingVideos, setExistingVideos] = useState([]);
   const [customAmenity, setCustomAmenity] = useState('');
   const [customLandmark, setCustomLandmark] = useState('');
   const [customConfig, setCustomConfig] = useState('');
@@ -146,6 +148,7 @@ const AdminAddProperty = () => {
           });
           setExistingPhotos(p.photos || []);
           setExistingFloorPlans(p.floorPlans || []);
+          setExistingVideos(p.videos || []);
         } catch (err) {
           toast.error('Failed to load property');
           navigate('/admin/dashboard');
@@ -213,6 +216,19 @@ const AdminAddProperty = () => {
     setFloorPlanFiles((prev) => [...prev, ...files]);
   };
 
+  const handleVideoChange = (e) => {
+    const files = Array.from(e.target.files);
+    if (videoFiles.length + files.length > 3) {
+      toast.error('Maximum 3 videos allowed');
+      return;
+    }
+    setVideoFiles((prev) => [...prev, ...files]);
+  };
+
+  const removeNewVideo = (index) => {
+    setVideoFiles((prev) => prev.filter((_, i) => i !== index));
+  };
+
   const removeNewPhoto = (index) => {
     setPhotoFiles((prev) => prev.filter((_, i) => i !== index));
   };
@@ -249,6 +265,7 @@ const AdminAddProperty = () => {
 
       photoFiles.forEach((file) => formData.append('photos', file));
       floorPlanFiles.forEach((file) => formData.append('floorPlans', file));
+      videoFiles.forEach((file) => formData.append('videos', file));
 
       if (isEdit) {
         await api.put(`/properties/${id}`, formData, {
@@ -753,10 +770,81 @@ const AdminAddProperty = () => {
             </div>
           </div>
 
+          {/* Videos */}
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <h2 className="font-bold text-gray-900 mb-1 flex items-center gap-2">
+              <span className="w-6 h-6 bg-primary-100 text-primary-700 rounded-full flex items-center justify-center text-xs font-bold">7</span>
+              Property Videos
+            </h2>
+            <p className="text-xs text-gray-400 mb-5 ml-8">Max 3 videos — MP4, MOV, WebM, AVI — up to 200MB each</p>
+
+            {/* Existing videos (edit mode) */}
+            {existingVideos.length > 0 && (
+              <div className="mb-4 space-y-3">
+                <p className="text-xs text-gray-500 font-medium">Current videos:</p>
+                {existingVideos.map((url, i) => (
+                  <div key={i} className="relative rounded-xl overflow-hidden border border-gray-200 bg-black">
+                    <video
+                      src={url}
+                      controls
+                      className="w-full max-h-48 object-contain"
+                    />
+                    <span className="absolute top-2 left-2 bg-black/60 text-white text-xs px-2 py-0.5 rounded-full">
+                      Video {i + 1}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* New video upload */}
+            {(videoFiles.length + existingVideos.length) < 3 && (
+              <label className="block cursor-pointer">
+                <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-primary-400 transition-colors">
+                  <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                  <p className="text-sm text-gray-600 font-medium">Click to upload videos</p>
+                  <p className="text-xs text-gray-400 mt-1">MP4, MOV, WebM, AVI — Max 200MB each</p>
+                </div>
+                <input
+                  type="file"
+                  accept="video/mp4,video/quicktime,video/webm,video/avi,video/x-msvideo"
+                  multiple
+                  onChange={handleVideoChange}
+                  className="hidden"
+                />
+              </label>
+            )}
+
+            {/* New video previews */}
+            {videoFiles.length > 0 && (
+              <div className="mt-4 space-y-3">
+                {videoFiles.map((file, i) => (
+                  <div key={i} className="relative rounded-xl overflow-hidden border border-gray-200 bg-black">
+                    <video
+                      src={URL.createObjectURL(file)}
+                      controls
+                      className="w-full max-h-48 object-contain"
+                    />
+                    <span className="absolute top-2 left-2 bg-black/60 text-white text-xs px-2 py-0.5 rounded-full">
+                      {file.name.length > 30 ? file.name.substring(0, 30) + '…' : file.name}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => removeNewVideo(i)}
+                      className="absolute top-2 right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
           {/* Contact */}
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
             <h2 className="font-bold text-gray-900 mb-5 flex items-center gap-2">
-              <span className="w-6 h-6 bg-primary-100 text-primary-700 rounded-full flex items-center justify-center text-xs font-bold">7</span>
+              <span className="w-6 h-6 bg-primary-100 text-primary-700 rounded-full flex items-center justify-center text-xs font-bold">8</span>
               Contact Information
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

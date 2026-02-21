@@ -89,11 +89,13 @@ const PropertyDetail = () => {
 
   const photos = property.photos || [];
   const floorPlans = property.floorPlans || [];
+  const videos = property.videos || [];
 
   const TABS = [
     { key: 'overview', label: 'Overview' },
     { key: 'amenities', label: 'Amenities' },
     { key: 'floor-plans', label: 'Floor Plans' },
+    ...(videos.length > 0 ? [{ key: 'videos', label: `Videos (${videos.length})` }] : []),
     { key: 'location', label: 'Location & Map' },
   ];
 
@@ -377,6 +379,31 @@ const PropertyDetail = () => {
                     ) : (
                       <p className="text-gray-400 text-sm">Floor plans not available.</p>
                     )}
+                  </div>
+                )}
+
+                {/* Videos */}
+                {activeTab === 'videos' && (
+                  <div>
+                    <h2 className="text-base font-bold text-gray-900 mb-4">Property Videos</h2>
+                    <div className="space-y-4">
+                      {videos.map((url, i) => (
+                        <div key={i} className="rounded-xl overflow-hidden border border-gray-200 bg-black">
+                          <video
+                            src={url}
+                            controls
+                            controlsList="nodownload"
+                            className="w-full max-h-96 object-contain"
+                            poster=""
+                          >
+                            Your browser does not support video playback.
+                          </video>
+                          <div className="bg-gray-50 px-4 py-2 border-t border-gray-200">
+                            <p className="text-xs text-gray-500 font-medium">Video {i + 1} of {videos.length}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
 

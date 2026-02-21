@@ -15,16 +15,12 @@ const {
   getAllPropertiesAdmin,
 } = require('../controllers/propertyController');
 
-// File type filter (used for both storage modes)
+// File type filter — accepts images and videos
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = /jpeg|jpg|png|webp/;
-  const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
-  const mimetype = allowedTypes.test(file.mimetype);
-  if (extname && mimetype) {
-    cb(null, true);
-  } else {
-    cb(new Error('Only image files (JPEG, JPG, PNG, WebP) are allowed'));
-  }
+  const isImage = /^image\/(jpeg|jpg|png|webp)$/.test(file.mimetype);
+  const isVideo = /^video\/(mp4|quicktime|webm|x-msvideo|avi|x-matroska)$/.test(file.mimetype);
+  if (isImage || isVideo) return cb(null, true);
+  cb(new Error('Only image files (JPEG, PNG, WebP) and video files (MP4, MOV, WebM, AVI) are allowed'));
 };
 
 // Use Cloudinary storage in production, disk storage in development
@@ -47,12 +43,13 @@ if (process.env.CLOUDINARY_CLOUD_NAME) {
 const upload = multer({
   storage,
   fileFilter,
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
+  limits: { fileSize: 200 * 1024 * 1024 }, // 200MB (covers large videos)
 });
 
 const uploadFields = upload.fields([
   { name: 'photos', maxCount: 20 },
   { name: 'floorPlans', maxCount: 10 },
+  { name: 'videos', maxCount: 3 },
 ]);
 
 // Public routes
