@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(mongod:*)",
+      "Bash(net start:*)",
+      "Bash(powershell -Command \"Get-Service | Where-Object {$_Name -like ''*mongo*''}\")",
+      "Bash(winget:*)",
+      "Bash(choco:*)",
+      "Bash(curl:*)",
+      "Bash(powershell -Command \"Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force\")"
+    ]
+  }
+}
