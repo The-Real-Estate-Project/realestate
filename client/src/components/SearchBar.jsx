@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Mic, Navigation, ChevronDown } from 'lucide-react';
-import { UNIT_TYPES } from '../utils/helpers';
+import { Search, Mic, Navigation, ChevronDown, MapPin } from 'lucide-react';
+import { UNIT_TYPES, BENGALURU_AREAS } from '../utils/helpers';
 
 const SearchBar = ({ initialCategory = 'buy' }) => {
   const navigate = useNavigate();
@@ -9,18 +9,40 @@ const SearchBar = ({ initialCategory = 'buy' }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [propertyType, setPropertyType] = useState(''); // residential | commercial | plots
   const [selectedUnitTypes, setSelectedUnitTypes] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [activeSuggestion, setActiveSuggestion] = useState(-1);
   const dropdownRef = useRef(null);
+  const inputRef = useRef(null);
 
-  // Close dropdown on outside click
+  // Close dropdowns on outside click
   useEffect(() => {
     const handler = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
         setShowDropdown(false);
+        setShowSuggestions(false);
       }
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
   }, []);
+
+  // Build suggestions whenever searchText changes
+  useEffect(() => {
+    const text = searchText.trim();
+    if (text.length < 1) {
+      setSuggestions([]);
+      setShowSuggestions(false);
+      return;
+    }
+    const lower = text.toLowerCase();
+    const matched = BENGALURU_AREAS.filter((area) =>
+      area.toLowerCase().includes(lower)
+    ).slice(0, 8);
+    setSuggestions(matched);
+    setShowSuggestions(matched.length > 0);
+    setActiveSuggestion(-1);
+  }, [searchText]);
 
   const handlePropertyTypeChange = (type) => {
     setPropertyType(type);
@@ -47,7 +69,35 @@ const SearchBar = ({ initialCategory = 'buy' }) => {
     setShowDropdown(false);
   };
 
+  const handleSelectSuggestion = (area) => {
+    setSearchText(area);
+    setShowSuggestions(false);
+    setSuggestions([]);
+    inputRef.current?.focus();
+  };
+
   const handleKeyDown = (e) => {
+    if (showSuggestions && suggestions.length > 0) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setActiveSuggestion((i) => Math.min(i + 1, suggestions.length - 1));
+        return;
+      }
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setActiveSuggestion((i) => Math.max(i - 1, 0));
+        return;
+      }
+      if (e.key === 'Enter' && activeSuggestion >= 0) {
+        e.preventDefault();
+        handleSelectSuggestion(suggestions[activeSuggestion]);
+        return;
+      }
+      if (e.key === 'Escape') {
+        setShowSuggestions(false);
+        return;
+      }
+    }
     if (e.key === 'Enter') handleSearch();
   };
 
@@ -86,15 +136,57 @@ const SearchBar = ({ initialCategory = 'buy' }) => {
           />
         </button>
 
-        {/* Search input */}
-        <input
-          type="text"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Search by city, location, project, developer"
-          className="flex-1 px-4 py-4 text-sm text-gray-700 placeholder-gray-400 focus:outline-none bg-transparent"
-        />
+        {/* Search input with autocomplete */}
+        <div className="flex-1 relative">
+          <input
+            ref={inputRef}
+            type="text"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            onKeyDown={handleKeyDown}
+            onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
+            placeholder="Search by city, location, project..."
+            className="w-full px-4 py-4 text-sm text-gray-700 placeholder-gray-400 focus:outline-none bg-transparent"
+            autoComplete="off"
+          />
+
+          {/* Suggestions dropdown */}
+          {showSuggestions && suggestions.length > 0 && (
+            <ul className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden">
+              {suggestions.map((area, i) => (
+                <li
+                  key={area}
+                  onMouseDown={() => handleSelectSuggestion(area)}
+                  className={`flex items-center gap-2.5 px-4 py-2.5 cursor-pointer text-sm transition-colors ${
+                    i === activeSuggestion
+                      ? 'bg-primary-50 text-primary-700'
+                      : 'text-gray-700 hover:bg-gray-50'
+                  }`}
+                >
+                  <MapPin className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
+                  <span>
+                    {/* Bold the matching part */}
+                    {area.toLowerCase().includes(searchText.trim().toLowerCase()) ? (
+                      (() => {
+                        const idx = area.toLowerCase().indexOf(searchText.trim().toLowerCase());
+                        return (
+                          <>
+                            {area.slice(0, idx)}
+                            <strong className="font-semibold text-gray-900">
+                              {area.slice(idx, idx + searchText.trim().length)}
+                            </strong>
+                            {area.slice(idx + searchText.trim().length)}
+                          </>
+                        );
+                      })()
+                    ) : area}
+                  </span>
+                  <span className="ml-auto text-xs text-gray-400">Bengaluru</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
 
         {/* Near Me button */}
         <button

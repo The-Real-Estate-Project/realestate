@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { Upload, X, Plus, ArrowLeft, Save } from 'lucide-react';
 import api from '../api/axios';
-import { UNIT_TYPES } from '../utils/helpers';
+import { UNIT_TYPES, BENGALURU_AREAS } from '../utils/helpers';
 import toast from 'react-hot-toast';
 
 const COMMON_AMENITIES = [
@@ -11,60 +11,6 @@ const COMMON_AMENITIES = [
   'Garden / Park', 'Tennis Court', 'Basketball Court', 'Indoor Games',
   'Conference Room', 'Cafeteria', 'CCTV Surveillance', 'Rainwater Harvesting',
   'Solar Panels', 'EV Charging', 'Intercom',
-];
-
-const BENGALURU_AREAS = [
-  // ── Central Bengaluru ──────────────────────────────────────────
-  'MG Road', 'Brigade Road', 'Commercial Street', 'Shivajinagar', 'Cubbon Park',
-  'Richmond Town', 'Lavelle Road', 'Residency Road', 'Infantry Road', 'Cunningham Road',
-  'Millers Road', 'Langford Town', 'Ulsoor', 'Halasuru', 'Cox Town',
-  'Frazer Town', 'Benson Town', 'Cooke Town', 'Cleveland Town', 'Murphy Town',
-  'Kammanahalli', 'Kalyan Nagar', 'HBR Layout', 'Horamavu', 'Banaswadi',
-  'Ramamurthy Nagar', 'CV Raman Nagar', 'Old Airport Road',
-
-  // ── East Bengaluru ─────────────────────────────────────────────
-  'Indiranagar', 'Domlur', 'Ejipura', 'Viveknagar', 'Koramangala',
-  'HSR Layout', 'Bellandur', 'Sarjapur Road', 'Sarjapur', 'Marathahalli',
-  'Whitefield', 'ITPL', 'Brookefield', 'Varthur', 'Kadugodi',
-  'Panathur', 'Hoodi', 'Mahadevapura', 'Doddanekundi', 'Hagadur',
-  'Munnekolala', 'Kadubeesanahalli', 'Nallurhalli', 'Thubarahalli', 'Ramagondanahalli',
-  'Channasandra', 'Seetharampalya', 'Ambedkar Nagar', 'KR Puram', 'Tin Factory',
-  'Borewell Road', 'HAL 2nd Stage', 'HAL 3rd Stage', 'HAL Airport Road',
-  'Virgonagar', 'Avalahalli', 'Laggere', 'Nandini Layout',
-
-  // ── South Bengaluru ────────────────────────────────────────────
-  'Jayanagar', 'JP Nagar', 'BTM Layout', 'Banashankari', 'Basavanagudi',
-  'Kanakapura Road', 'Bannerghatta Road', 'Electronic City', 'Electronic City Phase 1',
-  'Electronic City Phase 2', 'Bommanahalli', 'Hulimavu', 'Begur', 'Harlur',
-  'Arekere', 'Gottigere', 'Konanakunte', 'Subramanyapura', 'Uttarahalli',
-  'Sarakki', 'Yelachenahalli', 'Puttenahalli', 'Hongasandra', 'Bikasipura',
-  'Kumaraswamy Layout', 'Padmanabhanagar', 'Girinagar', 'Chamrajpet', 'Gandhi Nagar',
-  'Lal Bagh Road', 'Arvind Nagar', 'Nayandahalli', 'Talaghattapura', 'Kengeri',
-  'Kengeri Satellite Town', 'Jigani', 'Anekal', 'Chandapura', 'Attibele',
-  'Bommasandra', 'Hosa Road', 'Hoskote', 'Hullahalli',
-
-  // ── West Bengaluru ─────────────────────────────────────────────
-  'Nagarabhavi', 'Rajarajeswari Nagar', 'RR Nagar', 'Vijayanagar', 'Chandra Layout',
-  'Magadi Road', 'Basaveshwara Nagar', 'Rajajinagar', 'Malleswaram', 'Yeshwanthpur',
-  'Peenya', 'Peenya Industrial Area', 'Dasarahalli', 'Jalahalli', 'Nagasandra',
-  'Tumkur Road', 'BDA Layout', 'Chord Road', 'Mahalakshmi Layout', 'Marappana Palya',
-  'Manjunath Nagar', 'Subramanyanagar', 'Prakash Nagar', 'Shivanagar',
-  'Mathikere', 'Sadashivanagar',
-
-  // ── North Bengaluru ────────────────────────────────────────────
-  'Hebbal', 'Yelahanka', 'Yelahanka New Town', 'Devanahalli', 'Bagalur',
-  'Thanisandra', 'Kogilu', 'RT Nagar', 'Sahakara Nagar', 'Kodigehalli',
-  'Vidyaranyapura', 'Hesaraghatta Road', 'Bellary Road', 'Jakkur', 'Amruthahalli',
-  'Bharat Nagar', 'MS Ramaiah Nagar', 'Sanjaynagar', 'New BEL Road',
-  'Palace Guttahalli', 'Dollars Colony', 'Kalyananagar', 'Kalyana Nagar',
-  'Doddaballapur Road', 'Doddaballapur', 'Nelamangala', 'Chikkabanavara',
-  'Lakshminarayana Pura', 'Nagawara', 'Sanjay Nagar',
-
-  // ── Outskirts / Peripheral ────────────────────────────────────
-  'Kolar Road', 'Old Madras Road', 'Bannerghatta', 'Anekal Road',
-  'Mysore Road Outskirts', 'Ramanagara', 'Bidadi', 'Tumkur Road Outskirts',
-  'Hennur', 'Hennur Road', 'Hennur Main Road', 'Kasturi Nagar',
-  'Horamavu Agara', 'Horamavu Banaswadi', 'Agara',
 ];
 
 const AdminAddProperty = () => {
