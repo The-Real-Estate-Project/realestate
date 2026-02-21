@@ -118,16 +118,20 @@ const SearchBar = ({ initialCategory = 'buy' }) => {
         {/* Property Type dropdown trigger */}
         <button
           onClick={() => setShowDropdown(!showDropdown)}
-          className="flex items-center gap-2 px-5 py-4 border-r border-gray-200 text-sm font-semibold text-gray-700 hover:text-gray-900 whitespace-nowrap min-w-max transition-colors"
+          className="flex items-center gap-1.5 sm:gap-2 px-3 py-3 sm:px-5 sm:py-4 border-r border-gray-200 text-xs sm:text-sm font-semibold text-gray-700 hover:text-gray-900 whitespace-nowrap transition-colors"
         >
-          <span>{getDropdownLabel()}</span>
+          {/* Full label on sm+, short label on mobile */}
+          <span className="hidden sm:inline">{getDropdownLabel()}</span>
+          <span className="sm:hidden">
+            {!propertyType ? 'Type' : propertyType.charAt(0).toUpperCase() + propertyType.slice(1, 4) + '.'}
+          </span>
           <ChevronDown
             className={`w-4 h-4 text-gray-500 transition-transform duration-200 ${showDropdown ? 'rotate-180' : ''}`}
           />
         </button>
 
-        {/* Search input with autocomplete */}
-        <div className="flex-1 relative">
+        {/* Search input */}
+        <div className="flex-1 min-w-0">
           <input
             ref={inputRef}
             type="text"
@@ -135,64 +139,63 @@ const SearchBar = ({ initialCategory = 'buy' }) => {
             onChange={(e) => setSearchText(e.target.value)}
             onKeyDown={handleKeyDown}
             onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
-            placeholder="Search by city, location, project..."
-            className="w-full px-4 py-4 text-sm text-gray-700 placeholder-gray-400 focus:outline-none bg-transparent"
+            placeholder="Search location or project..."
+            className="w-full px-3 py-3 sm:px-4 sm:py-4 text-sm text-gray-700 placeholder-gray-400 focus:outline-none bg-transparent"
             autoComplete="off"
           />
-
-          {/* Suggestions dropdown */}
-          {showSuggestions && suggestions.length > 0 && (
-            <ul className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden">
-              {suggestions.map((area, i) => (
-                <li
-                  key={area}
-                  onMouseDown={() => handleSelectSuggestion(area)}
-                  className={`flex items-center gap-2.5 px-4 py-2.5 cursor-pointer text-sm transition-colors ${
-                    i === activeSuggestion
-                      ? 'bg-primary-50 text-primary-700'
-                      : 'text-gray-700 hover:bg-gray-50'
-                  }`}
-                >
-                  <MapPin className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-                  <span>
-                    {/* Bold the matching part */}
-                    {area.toLowerCase().includes(searchText.trim().toLowerCase()) ? (
-                      (() => {
-                        const idx = area.toLowerCase().indexOf(searchText.trim().toLowerCase());
-                        return (
-                          <>
-                            {area.slice(0, idx)}
-                            <strong className="font-semibold text-gray-900">
-                              {area.slice(idx, idx + searchText.trim().length)}
-                            </strong>
-                            {area.slice(idx + searchText.trim().length)}
-                          </>
-                        );
-                      })()
-                    ) : area}
-                  </span>
-                  <span className="ml-auto text-xs text-gray-400">Bengaluru</span>
-                </li>
-              ))}
-            </ul>
-          )}
         </div>
 
-
-        {/* Mic icon */}
-        <button className="p-3 hover:bg-gray-100 rounded-full mx-1 transition-colors" aria-label="Voice search">
+        {/* Mic icon — hidden on mobile to save space */}
+        <button className="hidden sm:flex p-3 hover:bg-gray-100 rounded-full mx-1 transition-colors" aria-label="Voice search">
           <Mic className="w-5 h-5 text-gray-500" />
         </button>
 
         {/* Search button */}
         <button
           onClick={handleSearch}
-          className="bg-olive-600 hover:bg-olive-700 text-white font-bold px-6 py-4 rounded-r-2xl flex items-center gap-2 transition-colors"
+          className="bg-olive-600 hover:bg-olive-700 text-white font-bold px-4 py-3 sm:px-6 sm:py-4 rounded-r-2xl flex items-center gap-2 transition-colors"
         >
           <Search className="w-4 h-4" />
           <span className="hidden sm:inline">Search</span>
         </button>
       </div>
+
+      {/* Suggestions dropdown — full width of search bar */}
+      {showSuggestions && suggestions.length > 0 && (
+        <ul className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-xl z-50 overflow-hidden">
+          {suggestions.map((area, i) => (
+            <li
+              key={area}
+              onMouseDown={() => handleSelectSuggestion(area)}
+              className={`flex items-center gap-2.5 px-4 py-2.5 cursor-pointer text-sm transition-colors ${
+                i === activeSuggestion
+                  ? 'bg-primary-50 text-primary-700'
+                  : 'text-gray-700 hover:bg-gray-50'
+              }`}
+            >
+              <MapPin className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
+              <span className="flex-1 min-w-0 truncate">
+                {/* Bold the matching part */}
+                {area.toLowerCase().includes(searchText.trim().toLowerCase()) ? (
+                  (() => {
+                    const idx = area.toLowerCase().indexOf(searchText.trim().toLowerCase());
+                    return (
+                      <>
+                        {area.slice(0, idx)}
+                        <strong className="font-semibold text-gray-900">
+                          {area.slice(idx, idx + searchText.trim().length)}
+                        </strong>
+                        {area.slice(idx + searchText.trim().length)}
+                      </>
+                    );
+                  })()
+                ) : area}
+              </span>
+              <span className="hidden sm:inline ml-auto text-xs text-gray-400 flex-shrink-0 pl-2">Bengaluru</span>
+            </li>
+          ))}
+        </ul>
+      )}
 
       {/* Dropdown panel */}
       {showDropdown && (
