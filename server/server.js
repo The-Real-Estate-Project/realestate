@@ -95,6 +95,15 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Real Estate API is running' });
 });
 
+// ─── Global error handler ─────────────────────────────────────────────────
+// Catches multer errors, Cloudinary errors, and any unhandled middleware errors
+// Returns JSON so the frontend can read the actual message
+app.use((err, req, res, next) => {
+  console.error('Global error:', err.message);
+  const status = err.status || err.statusCode || 500;
+  res.status(status).json({ message: err.message || 'Server error' });
+});
+
 // ─── Seed / sync default admin ────────────────────────────────────────────
 const seedAdmin = async () => {
   const Admin = require('./models/Admin');
