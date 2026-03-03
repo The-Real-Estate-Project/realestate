@@ -33,16 +33,9 @@ export const PROPERTY_TYPE_LABELS = {
  * Map unitType key to display label
  */
 export const UNIT_TYPE_LABELS = {
-  apartment: 'Apartment',
+  site: 'Site',
+  flat: 'Flat',
   land: 'Land',
-  'low-rise-floor': 'Low Rise Floor',
-  'residential-plots': 'Residential Plots',
-  'independent-floors': 'Independent Floors',
-  shop: 'Shop',
-  'retail-shops': 'Retail Shops',
-  'food-court': 'Food Court',
-  'sco-plots': 'SCO Plots',
-  'industrial-plot': 'Industrial Plot',
 };
 
 /**
@@ -50,17 +43,9 @@ export const UNIT_TYPE_LABELS = {
  */
 export const UNIT_TYPES = {
   residential: [
-    { value: 'apartment', label: 'Apartment' },
+    { value: 'site', label: 'Site' },
+    { value: 'flat', label: 'Flat' },
     { value: 'land', label: 'Land' },
-    { value: 'low-rise-floor', label: 'Low Rise Floor' },
-    { value: 'residential-plots', label: 'Residential Plots' },
-    { value: 'independent-floors', label: 'Independent Floors' },
-  ],
-  commercial: [
-    { value: 'shop', label: 'Shop' },
-    { value: 'retail-shops', label: 'Retail Shops' },
-    { value: 'food-court', label: 'Food Court' },
-    { value: 'sco-plots', label: 'SCO Plots' },
   ],
 };
 

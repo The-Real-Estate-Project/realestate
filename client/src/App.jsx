@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import FloatingContact from './components/FloatingContact';
 import Home from './pages/Home';
 import PropertyListing from './pages/PropertyListing';
 import PropertyDetail from './pages/PropertyDetail';
@@ -24,6 +25,7 @@ const PublicLayout = ({ children }) => (
     <Navbar />
     {children}
     <Footer />
+    <FloatingContact />
   </>
 );
 

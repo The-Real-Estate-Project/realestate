@@ -18,31 +18,17 @@ const propertySchema = new mongoose.Schema(
       required: true,
       enum: ['buy', 'rent', 'new-launch', 'plots-lands'],
     },
-    // Residential, Commercial, Plots
+    // Residential only
     propertyType: {
       type: String,
       required: true,
-      enum: ['residential', 'commercial', 'plots'],
+      enum: ['residential'],
     },
-    // Based on propertyType
+    // Site, Flat, Land
     unitType: {
       type: String,
       required: true,
-      enum: [
-        // Residential
-        'apartment',
-        'land',
-        'low-rise-floor',
-        'residential-plots',
-        'independent-floors',
-        // Commercial
-        'shop',
-        'retail-shops',
-        'food-court',
-        'sco-plots',
-        // Plots
-        'industrial-plot',
-      ],
+      enum: ['site', 'flat', 'land'],
     },
     // Location details (Bengaluru only)
     location: {

@@ -32,7 +32,7 @@ const AdminAddProperty = () => {
     title: '',
     category: 'buy',
     propertyType: 'residential',
-    unitType: 'apartment',
+    unitType: 'site',
     location: '',
     area: '',
     address: '',
@@ -291,7 +291,6 @@ const AdminAddProperty = () => {
                   </label>
                   <select name="propertyType" value={form.propertyType} onChange={handleChange} className="input-field">
                     <option value="residential">Residential</option>
-                    <option value="commercial">Commercial</option>
                   </select>
                 </div>
 

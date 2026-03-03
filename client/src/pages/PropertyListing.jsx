@@ -8,13 +8,11 @@ import { UNIT_TYPES, CATEGORY_LABELS, PROPERTY_TYPE_LABELS } from '../utils/help
 const CATEGORIES = [
   { value: '', label: 'All' },
   { value: 'buy', label: 'Buy' },
-  { value: 'rent', label: 'Rent' },
 ];
 
 const PROPERTY_TYPES = [
   { value: '', label: 'All Types' },
   { value: 'residential', label: 'Residential' },
-  { value: 'commercial', label: 'Commercial' },
 ];
 
 const PropertyListing = () => {
@@ -97,7 +95,7 @@ const PropertyListing = () => {
       {/* Sub-header */}
       <div className="bg-white border-b border-gray-200 sticky top-16 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
             {/* Category tabs */}
             <div className="flex gap-2 flex-wrap">
               {CATEGORIES.map(({ value, label }) => (
@@ -126,7 +124,7 @@ const PropertyListing = () => {
                   value={localSearch}
                   onChange={(e) => setLocalSearch(e.target.value)}
                   placeholder="Search location, project..."
-                  className="pl-9 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 w-48 sm:w-64"
+                  className="pl-9 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 w-36 sm:w-64"
                 />
               </div>
               <button type="submit" className="btn-primary text-sm py-2 px-4">

@@ -41,15 +41,16 @@ const NewlyLaunchedSection = () => {
 
   if (loading) {
     return (
-      <section className="py-14 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-14 relative">
+        <div className="absolute inset-0 bg-indigo-950/82 backdrop-blur-[2px]" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <div className="h-8 bg-gray-200 rounded w-64 mx-auto animate-pulse mb-2" />
-            <div className="h-4 bg-gray-100 rounded w-48 mx-auto animate-pulse" />
+            <div className="h-8 bg-white/10 rounded w-64 mx-auto animate-pulse mb-2" />
+            <div className="h-4 bg-white/10 rounded w-48 mx-auto animate-pulse" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-white rounded-xl h-80 animate-pulse border border-gray-100" />
+              <div key={i} className="bg-white/10 rounded-xl h-80 animate-pulse border border-white/10" />
             ))}
           </div>
         </div>
@@ -62,25 +63,27 @@ const NewlyLaunchedSection = () => {
   const visibleProperties = properties.slice(currentIndex, currentIndex + visibleCount);
 
   return (
-    <section className="py-14 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header - matches Image 5 exactly */}
+    <section className="py-14 relative">
+      {/* Dark glass overlay — background image shows through at ~18% */}
+      <div className="absolute inset-0 bg-indigo-950/82 backdrop-blur-[2px]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-indigo-950">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
             Newly Launched Projects
           </h2>
-          <p className="text-gray-500 text-sm mt-2">Preferred units at zero brokerage</p>
+          <p className="text-gray-400 text-sm mt-2">Preferred units at zero brokerage</p>
         </div>
 
         {/* Carousel */}
         <div className="relative">
-          {/* Left arrow */}
           {currentIndex > 0 && (
             <button
               onClick={prev}
-              className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
+              className="absolute left-1 sm:-left-5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/35 rounded-full flex items-center justify-center transition-colors border border-white/20"
             >
-              <ChevronLeft className="w-5 h-5 text-gray-700" />
+              <ChevronLeft className="w-5 h-5 text-white" />
             </button>
           )}
 
@@ -93,18 +96,17 @@ const NewlyLaunchedSection = () => {
             ))}
           </div>
 
-          {/* Right arrow */}
           {currentIndex < maxIndex && (
             <button
               onClick={next}
-              className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
+              className="absolute right-1 sm:-right-5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/35 rounded-full flex items-center justify-center transition-colors border border-white/20"
             >
-              <ChevronRight className="w-5 h-5 text-gray-700" />
+              <ChevronRight className="w-5 h-5 text-white" />
             </button>
           )}
         </div>
 
-        {/* Dots navigation */}
+        {/* Dots */}
         {properties.length > visibleCount && (
           <div className="flex justify-center gap-2 mt-6">
             {Array.from({ length: maxIndex + 1 }).map((_, i) => (
@@ -112,7 +114,7 @@ const NewlyLaunchedSection = () => {
                 key={i}
                 onClick={() => setCurrentIndex(i)}
                 className={`w-2 h-2 rounded-full transition-colors ${
-                  i === currentIndex ? 'bg-olive-600' : 'bg-gray-300'
+                  i === currentIndex ? 'bg-olive-400' : 'bg-white/25'
                 }`}
               />
             ))}
@@ -123,7 +125,7 @@ const NewlyLaunchedSection = () => {
         <div className="mt-8 text-center">
           <Link
             to="/properties?category=new-launch"
-            className="inline-flex items-center gap-2 border border-primary-700 text-primary-700 px-8 py-3 rounded-full font-semibold hover:bg-primary-700 hover:text-white transition-all duration-200"
+            className="inline-flex items-center gap-2 border border-white/40 text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-indigo-950 transition-all duration-200"
           >
             View All New Launches
           </Link>

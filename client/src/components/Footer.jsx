@@ -7,16 +7,17 @@ const Footer = () => {
   return (
     <footer className="bg-indigo-950 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/home" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">DH</span>
+            <Link to="/home" className="inline-flex">
+              <div className="bg-white rounded-xl p-1.5">
+                <img
+                  src="/rrnest-logo.png"
+                  alt="RR Nest"
+                  className="h-16 w-auto object-contain"
+                />
               </div>
-              <span className="text-xl font-bold">
-                Demo<span className="text-primary-400">Homes V1</span>
-              </span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               Your trusted real estate partner in Bengaluru. Find the best residential,
@@ -49,9 +50,10 @@ const Footer = () => {
             <ul className="space-y-2.5">
               {[
                 { to: '/properties?category=buy', label: 'Buy Property' },
-                { to: '/properties?category=rent', label: 'Rent Property' },
                 { to: '/properties?propertyType=residential', label: 'Residential' },
-                { to: '/properties?propertyType=commercial', label: 'Commercial' },
+                { to: '/properties?unitType=site', label: 'Sites' },
+                { to: '/properties?unitType=flat', label: 'Flats' },
+                { to: '/properties?unitType=land', label: 'Land' },
               ].map(({ to, label }) => (
                 <li key={label}>
                   <Link
@@ -59,34 +61,6 @@ const Footer = () => {
                     className="text-gray-400 hover:text-white text-sm transition-colors"
                   >
                     {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Popular Areas */}
-          <div>
-            <h3 className="font-bold text-sm uppercase tracking-wider text-gray-300 mb-4">
-              Popular Areas
-            </h3>
-            <ul className="space-y-2.5">
-              {[
-                'Whitefield',
-                'Koramangala',
-                'Indiranagar',
-                'Electronic City',
-                'Sarjapur Road',
-                'Hebbal',
-                'HSR Layout',
-                'Bannerghatta Road',
-              ].map((area) => (
-                <li key={area}>
-                  <Link
-                    to={`/properties?search=${area}`}
-                    className="text-gray-400 hover:text-white text-sm transition-colors"
-                  >
-                    {area}
                   </Link>
                 </li>
               ))}
@@ -102,19 +76,19 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-primary-400 flex-shrink-0 mt-0.5" />
                 <span className="text-gray-400 text-sm">
-                  Bengaluru, Karnataka, India
+                  Rajarajeshwari Nagar, Bengaluru, Karnataka
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-primary-400 flex-shrink-0" />
-                <a href="tel:+919999999999" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  +91 99999 99999
+                <a href="tel:+919945450585" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  +91 99454 50585
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary-400 flex-shrink-0" />
-                <a href="mailto:info@demohomesv1.com" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  info@demohomesv1.com
+                <a href="mailto:info@rrnest.in" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  info@rrnest.in
                 </a>
               </li>
             </ul>
@@ -136,7 +110,7 @@ const Footer = () => {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-gray-500 text-xs">
-            © {currentYear} Demo Homes V1. All rights reserved.
+            © {currentYear} RR Nest. All rights reserved.
           </p>
           <p className="text-gray-600 text-xs">
             Serving Bengaluru real estate since 2024

@@ -43,17 +43,18 @@ const FeaturedProperties = () => {
 
   if (loading) {
     return (
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 relative">
+        <div className="absolute inset-0 bg-indigo-950/82 backdrop-blur-[2px]" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <div className="h-7 bg-gray-200 rounded w-64 animate-pulse mb-2" />
-              <div className="h-4 bg-gray-100 rounded w-48 animate-pulse" />
+              <div className="h-7 bg-white/10 rounded w-64 animate-pulse mb-2" />
+              <div className="h-4 bg-white/10 rounded w-48 animate-pulse" />
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-gray-100 rounded-xl h-72 animate-pulse" />
+              <div key={i} className="bg-white/10 rounded-xl h-72 animate-pulse border border-white/10" />
             ))}
           </div>
         </div>
@@ -66,19 +67,22 @@ const FeaturedProperties = () => {
   const visibleProperties = properties.slice(currentIndex, currentIndex + visibleCount);
 
   return (
-    <section className="py-12 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-12 relative">
+      {/* Dark glass overlay — background image shows through at ~18% */}
+      <div className="absolute inset-0 bg-indigo-950/82 backdrop-blur-[2px]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="section-title">
+            <h2 className="text-2xl md:text-3xl font-bold text-white">
               Featured Projects in Bengaluru
             </h2>
-            <p className="text-gray-500 text-sm mt-1">Handpicked premium properties</p>
+            <p className="text-gray-400 text-sm mt-1">Handpicked premium properties</p>
           </div>
           <Link
             to="/properties?featured=true"
-            className="hidden sm:block text-sm font-semibold text-primary-700 hover:text-primary-800 hover:underline"
+            className="hidden sm:block text-sm font-semibold text-white/70 hover:text-white hover:underline"
           >
             View All →
           </Link>
@@ -86,13 +90,12 @@ const FeaturedProperties = () => {
 
         {/* Carousel */}
         <div className="relative">
-          {/* Left arrow */}
           {currentIndex > 0 && (
             <button
               onClick={prev}
-              className="absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
+              className="absolute left-1 sm:-left-5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/35 rounded-full flex items-center justify-center transition-colors border border-white/20"
             >
-              <ChevronLeft className="w-5 h-5 text-gray-700" />
+              <ChevronLeft className="w-5 h-5 text-white" />
             </button>
           )}
 
@@ -106,13 +109,12 @@ const FeaturedProperties = () => {
             ))}
           </div>
 
-          {/* Right arrow */}
           {currentIndex < maxIndex && (
             <button
               onClick={next}
-              className="absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:shadow-lg transition-shadow"
+              className="absolute right-1 sm:-right-5 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/35 rounded-full flex items-center justify-center transition-colors border border-white/20"
             >
-              <ChevronRight className="w-5 h-5 text-gray-700" />
+              <ChevronRight className="w-5 h-5 text-white" />
             </button>
           )}
         </div>
@@ -125,7 +127,7 @@ const FeaturedProperties = () => {
                 key={i}
                 onClick={() => setCurrentIndex(i)}
                 className={`w-2 h-2 rounded-full transition-colors ${
-                  i === currentIndex ? 'bg-primary-700' : 'bg-gray-300'
+                  i === currentIndex ? 'bg-primary-400' : 'bg-white/25'
                 }`}
               />
             ))}
@@ -136,7 +138,7 @@ const FeaturedProperties = () => {
         <div className="mt-6 text-center sm:hidden">
           <Link
             to="/properties?featured=true"
-            className="text-sm font-semibold text-primary-700 hover:underline"
+            className="text-sm font-semibold text-white/70 hover:text-white hover:underline"
           >
             View All Featured Properties →
           </Link>
