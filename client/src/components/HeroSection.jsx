@@ -75,10 +75,10 @@ const HeroSection = () => {
       />
 
       {/* ─── Main content ──────────────────────────────────────────── */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 pt-28 pb-16">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-start text-center px-4 sm:px-6 lg:px-8 pt-4 sm:pt-8 lg:pt-10 pb-10 sm:pb-16">
 
         {/* Greeting badge */}
-        <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-8">
+        <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-5 sm:mb-8">
           <span className="w-2 h-2 rounded-full bg-olive-400 animate-pulse flex-shrink-0" />
           <span className="text-white/90 text-xs font-semibold tracking-[0.18em] uppercase">
             Welcome — Your Dream Home Awaits
@@ -86,7 +86,7 @@ const HeroSection = () => {
         </div>
 
         {/* Headline */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-5">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-3 sm:mb-5">
           What are you{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-300 via-violet-300 to-primary-400">
             looking for?

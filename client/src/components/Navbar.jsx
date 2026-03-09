@@ -15,18 +15,18 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-10 sm:h-11 lg:h-12 flex items-center justify-between">
         {/* Left: Hamburger + Logo */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-3">
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 rounded-lg hover:bg-gray-100 transition-colors lg:hidden"
+            className="p-1 rounded-lg hover:bg-gray-100 transition-colors lg:hidden"
             aria-label="Toggle menu"
           >
             {mobileOpen ? (
-              <X className="w-5 h-5 text-gray-700" />
+              <X className="w-4 h-4 text-gray-700" />
             ) : (
-              <Menu className="w-5 h-5 text-gray-700" />
+              <Menu className="w-4 h-4 text-gray-700" />
             )}
           </button>
 
@@ -34,7 +34,7 @@ const Navbar = () => {
             <img
               src="/rrnest-logo.png"
               alt="RR Nest"
-              className="h-12 w-12 object-cover rounded-full"
+              className="h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9 object-cover rounded-full"
             />
           </Link>
         </div>
@@ -60,7 +60,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/admin/login"
-              className="btn-primary text-sm px-4 py-2"
+              className="bg-primary-700 text-white text-sm font-semibold px-4 py-1.5 rounded-lg hover:bg-primary-800 transition-colors"
             >
               Admin Login
             </Link>
