@@ -33,7 +33,7 @@ export const PROPERTY_TYPE_LABELS = {
  * Map unitType key to display label
  */
 export const UNIT_TYPE_LABELS = {
-  site: 'Site',
+  site: 'Site/Plot',
   flat: 'Flat',
   land: 'Land',
 };
@@ -43,7 +43,7 @@ export const UNIT_TYPE_LABELS = {
  */
 export const UNIT_TYPES = {
   residential: [
-    { value: 'site', label: 'Site' },
+    { value: 'site', label: 'Site/Plot' },
     { value: 'flat', label: 'Flat' },
     { value: 'land', label: 'Land' },
   ],

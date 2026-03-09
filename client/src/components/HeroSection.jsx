@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 const CARDS = [
   {
     key: 'site',
-    label: 'Site',
+    label: 'Site/Plot',
     sub: 'Residential Sites',
     params: 'unitType=site',
     image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&w=700&q=75',
@@ -94,9 +94,6 @@ const HeroSection = () => {
         </h1>
 
         {/* Sub-headline */}
-        <p className="text-white/65 text-base sm:text-lg max-w-xl mx-auto mb-14 leading-relaxed">
-          Browse Sites, Flats &amp; Lands
-        </p>
 
         {/* Category cards */}
         <div className="w-full max-w-5xl mx-auto">

@@ -24,7 +24,7 @@ const propertySchema = new mongoose.Schema(
       required: true,
       enum: ['residential'],
     },
-    // Site, Flat, Land
+    // Site/Plot, Flat, Land
     unitType: {
       type: String,
       required: true,
