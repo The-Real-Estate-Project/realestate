@@ -445,7 +445,7 @@ const AdminAddProperty = () => {
               <span className="w-6 h-6 bg-primary-100 text-primary-700 rounded-full flex items-center justify-center text-xs font-bold">3</span>
               Pricing
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5">Min Price</label>
                 <input
@@ -830,17 +830,17 @@ const AdminAddProperty = () => {
           </div>
 
           {/* Submit */}
-          <div className="flex gap-4 justify-end pb-8">
+          <div className="flex flex-col-reverse sm:flex-row gap-3 sm:justify-end pb-8">
             <Link
               to="/admin/dashboard"
-              className="btn-outline px-8"
+              className="btn-outline text-center px-8"
             >
               Cancel
             </Link>
             <button
               type="submit"
               disabled={loading}
-              className="btn-primary px-8 flex items-center gap-2"
+              className="btn-primary px-8 flex items-center justify-center gap-2"
             >
               {loading ? (
                 <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

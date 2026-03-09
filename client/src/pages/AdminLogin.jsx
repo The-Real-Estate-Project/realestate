@@ -42,10 +42,10 @@ const AdminLogin = () => {
           <div className="text-center mb-8">
             <Link to="/" className="inline-flex items-center gap-2 mb-6">
               <div className="w-10 h-10 bg-primary-700 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold">DH</span>
+                <span className="text-white font-bold text-sm">RR</span>
               </div>
               <span className="text-xl font-bold text-gray-900">
-                Demo<span className="text-primary-700">Homes V1</span>
+                RR<span className="text-primary-700">Nest</span>
               </span>
             </Link>
             <div className="w-14 h-14 bg-primary-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -68,7 +68,7 @@ const AdminLogin = () => {
                   name="email"
                   value={form.email}
                   onChange={handleChange}
-                  placeholder="admin@demohomesv1.com"
+                  placeholder=""
                   className="input-field pl-10"
                   required
                   autoComplete="email"
@@ -87,7 +87,7 @@ const AdminLogin = () => {
                   name="password"
                   value={form.password}
                   onChange={handleChange}
-                  placeholder="Enter your password"
+                  placeholder=""
                   className="input-field pl-10 pr-10"
                   required
                   autoComplete="current-password"

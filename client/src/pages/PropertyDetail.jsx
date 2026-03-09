@@ -100,7 +100,7 @@ const PropertyDetail = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 overflow-x-hidden">
       {/* Breadcrumb */}
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-2 text-xs text-gray-500">
@@ -272,14 +272,14 @@ const PropertyDetail = () => {
             )}
 
             {/* Tabs */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-              {/* Tab navigation */}
-              <div className="flex border-b border-gray-200 overflow-x-auto">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100">
+              {/* Tab navigation - horizontally scrollable on mobile */}
+              <div className="flex border-b border-gray-200 overflow-x-auto scroll-smooth [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-track]:bg-transparent">
                 {TABS.map(({ key, label }) => (
                   <button
                     key={key}
                     onClick={() => setActiveTab(key)}
-                    className={`flex-shrink-0 px-5 py-3.5 text-sm font-semibold transition-colors border-b-2 ${
+                    className={`flex-shrink-0 whitespace-nowrap px-4 py-3 text-sm font-semibold transition-colors border-b-2 ${
                       activeTab === key
                         ? 'border-primary-700 text-primary-700'
                         : 'border-transparent text-gray-500 hover:text-gray-800'
@@ -297,7 +297,7 @@ const PropertyDetail = () => {
                   <div>
                     <h2 className="text-base font-bold text-gray-900 mb-3">About This Property</h2>
                     {property.overview ? (
-                      <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line">
+                      <p className="text-gray-600 text-sm leading-relaxed whitespace-pre-line break-words">
                         {property.overview}
                       </p>
                     ) : (
@@ -455,7 +455,7 @@ const PropertyDetail = () => {
           {/* Sidebar - Contact */}
           <div className="space-y-4">
             {/* Enquiry card */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sticky top-24">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 lg:sticky lg:top-16">
               <h3 className="font-bold text-gray-900 mb-1">Interested in this property?</h3>
               <p className="text-gray-500 text-sm mb-5">
                 Get in touch with us for more details, site visit, or pricing.

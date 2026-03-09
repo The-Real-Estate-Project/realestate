@@ -165,18 +165,18 @@ const AdminDashboard = () => {
         {/* Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           {STAT_CARDS.map(({ label, value, icon: Icon, color }) => (
-            <div key={label} className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-              <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl ${color} mb-3`}>
-                <Icon className="w-5 h-5" />
+            <div key={label} className="bg-white rounded-2xl p-3 sm:p-5 shadow-sm border border-gray-100">
+              <div className={`inline-flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl ${color} mb-2 sm:mb-3`}>
+                <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <p className="text-2xl font-bold text-gray-900">{value}</p>
-              <p className="text-xs text-gray-500 mt-0.5">{label}</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{value}</p>
+              <p className="text-xs text-gray-500 mt-0.5 leading-tight">{label}</p>
             </div>
           ))}
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-1 bg-gray-200 rounded-xl p-1 w-fit mb-6">
+        <div className="flex gap-1 bg-gray-200 rounded-xl p-1 w-full sm:w-fit mb-6">
           {[
             { key: 'properties', label: 'Properties' },
             { key: 'enquiries', label: `Enquiries (${enquiries.length})` },
@@ -184,7 +184,7 @@ const AdminDashboard = () => {
             <button
               key={key}
               onClick={() => setActiveTab(key)}
-              className={`px-5 py-2 rounded-lg text-sm font-semibold transition-colors ${
+              className={`flex-1 sm:flex-none px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
                 activeTab === key
                   ? 'bg-white text-gray-900 shadow-sm'
                   : 'text-gray-600 hover:text-gray-800'
@@ -199,8 +199,8 @@ const AdminDashboard = () => {
         {activeTab === 'properties' && (
           <div>
             {/* Toolbar */}
-            <div className="flex items-center gap-3 mb-4 flex-wrap">
-              <form onSubmit={handleSearchSubmit} className="flex gap-2 flex-1 max-w-sm">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-4">
+              <form onSubmit={handleSearchSubmit} className="flex gap-2 flex-1 sm:max-w-sm">
                 <div className="relative flex-1">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
@@ -215,10 +215,9 @@ const AdminDashboard = () => {
                   Search
                 </button>
               </form>
-              <div className="flex-1" />
               <Link
                 to="/admin/add-property"
-                className="flex items-center gap-2 btn-primary text-sm"
+                className="flex items-center justify-center gap-2 btn-primary text-sm"
               >
                 <Plus className="w-4 h-4" />
                 Add Property

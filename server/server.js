@@ -105,7 +105,7 @@ app.use((err, req, res, next) => {
 // ─── Seed / sync default admin ────────────────────────────────────────────
 const seedAdmin = async () => {
   const Admin = require('./models/Admin');
-  const envEmail = process.env.ADMIN_EMAIL || 'admin@demohomesv1.com';
+  const envEmail = process.env.ADMIN_EMAIL || 'admin@rrnest.in';
   const envPassword = process.env.ADMIN_PASSWORD || 'Admin@123';
   const envName = process.env.ADMIN_NAME || 'Admin';
   try {
