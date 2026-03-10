@@ -259,10 +259,10 @@ const PropertyDetail = () => {
                     </div>
                   )}
                   {property.configurations?.length > 0 && (
-                    <div className="flex flex-col items-center p-3 bg-gray-50 rounded-xl text-center">
-                      <Layers className="w-5 h-5 text-primary-700 mb-1" />
+                    <div className="flex flex-col items-center p-3 bg-gray-50 rounded-xl text-center min-w-0">
+                      <Layers className="w-5 h-5 text-primary-700 mb-1 shrink-0" />
                       <p className="text-xs text-gray-500">Configurations</p>
-                      <p className="text-sm font-bold text-gray-800 mt-0.5">
+                      <p className="text-sm font-bold text-gray-800 mt-0.5 break-words w-full">
                         {property.configurations.join(', ')}
                       </p>
                     </div>
@@ -515,8 +515,8 @@ const PropertyDetail = () => {
                   ...(property.possessionDate ? [{ label: 'Possession', value: property.possessionDate }] : []),
                 ].map(({ label, value }) => (
                   <div key={label} className="flex justify-between items-start gap-2">
-                    <span className="text-xs text-gray-500 font-medium">{label}</span>
-                    <span className="text-xs text-gray-800 font-semibold text-right">{value}</span>
+                    <span className="text-xs text-gray-500 font-medium shrink-0">{label}</span>
+                    <span className="text-xs text-gray-800 font-semibold text-right min-w-0 break-words">{value}</span>
                   </div>
                 ))}
               </div>
