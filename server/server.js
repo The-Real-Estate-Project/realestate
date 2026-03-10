@@ -117,8 +117,8 @@ const seedAdmin = async () => {
       console.log('\n✅ Default admin created');
       console.log(`   📧 Email:    ${envEmail}`);
       console.log(`   🔑 Password: ${envPassword}`);
-    } else if (existing.email !== envEmail) {
-      // Email in .env changed — update the existing admin to stay in sync
+    } else {
+      // Always sync credentials from env vars to keep production in sync
       existing.email = envEmail;
       existing.password = envPassword;
       existing.name = envName;
