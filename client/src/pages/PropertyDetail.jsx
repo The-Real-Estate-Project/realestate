@@ -192,7 +192,7 @@ const PropertyDetail = () => {
         {/* Content grid */}
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Main content */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-6 min-w-0">
             {/* Property header */}
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
               <div className="flex items-start justify-between gap-4">
@@ -453,7 +453,7 @@ const PropertyDetail = () => {
           </div>
 
           {/* Sidebar - Contact */}
-          <div className="space-y-4">
+          <div className="space-y-4 min-w-0">
             {/* Enquiry card */}
             <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 lg:sticky lg:top-16">
               <h3 className="font-bold text-gray-900 mb-1">Interested in this property?</h3>
