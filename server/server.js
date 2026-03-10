@@ -55,8 +55,9 @@ app.use(cors({
     if (/^http:\/\/localhost:\d+$/.test(origin)) return callback(null, true);
     // Allow configured production frontend URL
     if (process.env.FRONTEND_URL && origin === process.env.FRONTEND_URL) return callback(null, true);
-    // In production allow any .netlify.app subdomain as fallback
+    // In production allow any .netlify.app or .vercel.app subdomain as fallback
     if (origin.endsWith('.netlify.app')) return callback(null, true);
+    if (origin.endsWith('.vercel.app')) return callback(null, true);
     callback(new Error(`CORS: origin ${origin} not allowed`));
   },
   credentials: true,
