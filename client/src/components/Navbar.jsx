@@ -14,7 +14,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white/30 backdrop-blur-md border-b border-white/20 shadow-sm">
       <nav className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-10 sm:h-11 lg:h-12 flex items-center justify-between">
         {/* Left: Hamburger + Logo */}
         <div className="flex items-center gap-2 sm:gap-3">
@@ -32,14 +32,26 @@ const Navbar = () => {
 
           <Link to="/home" className="flex items-center">
             <img
-              src="/rrnest-logo.png"
-              alt="RR Nest"
-              className="h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9 object-cover rounded-full"
+              src="/rrplots-logo.png"
+              alt="RR Plots"
+              className="h-8 sm:h-9 lg:h-10 w-auto object-contain rounded-lg"
             />
           </Link>
         </div>
 
-        {/* Center: Location */}
+        {/* Center: Nav links (desktop) */}
+        <div className="hidden lg:flex items-center gap-1">
+          <Link to="/home" className="text-sm font-semibold text-gray-900 px-3 py-2 rounded-lg hover:bg-white/40 hover:backdrop-blur-sm hover:shadow-sm transition-all duration-200">
+            Home
+          </Link>
+          <Link to="/properties" className="text-sm font-semibold text-gray-900 px-3 py-2 rounded-lg hover:bg-white/40 hover:backdrop-blur-sm hover:shadow-sm transition-all duration-200">
+            Properties
+          </Link>
+          <Link to="/about" className="text-sm font-semibold text-gray-900 px-3 py-2 rounded-lg hover:bg-white/40 hover:backdrop-blur-sm hover:shadow-sm transition-all duration-200">
+            About Us
+          </Link>
+        </div>
+
         {/* Right: Actions */}
         <div className="flex items-center gap-2 sm:gap-3">
           {admin ? (
@@ -70,20 +82,27 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-3 animate-slide-down">
+        <div className="lg:hidden bg-white/60 backdrop-blur-md border-t border-white/20 px-4 py-4 space-y-3 animate-slide-down">
           <Link
             to="/home"
-            className="block text-sm font-medium text-gray-700 hover:text-primary-700 py-2"
+            className="block text-sm font-semibold text-gray-900 py-2 px-2 rounded-lg hover:bg-white/50 transition-all duration-200"
             onClick={() => setMobileOpen(false)}
           >
             Home
           </Link>
           <Link
-            to="/properties?category=buy"
-            className="block text-sm font-medium text-gray-700 hover:text-primary-700 py-2"
+            to="/properties"
+            className="block text-sm font-semibold text-gray-900 py-2 px-2 rounded-lg hover:bg-white/50 transition-all duration-200"
             onClick={() => setMobileOpen(false)}
           >
-            Buy
+            Properties
+          </Link>
+          <Link
+            to="/about"
+            className="block text-sm font-semibold text-gray-900 py-2 px-2 rounded-lg hover:bg-white/50 transition-all duration-200"
+            onClick={() => setMobileOpen(false)}
+          >
+            About Us
           </Link>
           {admin ? (
             <>

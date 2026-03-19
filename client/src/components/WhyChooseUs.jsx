@@ -33,7 +33,7 @@ const WhyChooseUs = () => {
       <div className="absolute inset-0 bg-white" />
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <h2 className="section-title">Why Choose RR Nest?</h2>
+          <h2 className="section-title">Why Choose RR Plots?</h2>
           <p className="text-gray-500 text-sm mt-2 max-w-xl mx-auto">
             We are dedicated to helping you find the best real estate deals in Bengaluru
             with complete transparency and support.

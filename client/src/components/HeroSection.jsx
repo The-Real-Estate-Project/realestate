@@ -77,12 +77,44 @@ const HeroSection = () => {
       {/* ─── Main content ──────────────────────────────────────────── */}
       <div className="relative z-10 flex-1 flex flex-col items-center justify-start text-center px-4 sm:px-6 lg:px-8 pt-4 sm:pt-8 lg:pt-10 pb-10 sm:pb-16">
 
-        {/* Greeting badge */}
-        <div className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-5 sm:mb-8">
-          <span className="w-2 h-2 rounded-full bg-olive-400 animate-pulse flex-shrink-0" />
-          <span className="text-white/90 text-xs font-semibold tracking-[0.18em] uppercase">
-            Welcome — Your Dream Home Awaits
-          </span>
+        {/* Brand Logo */}
+        <div className="mb-4 sm:mb-6">
+          <img
+            src="/rrplots-logo.gif"
+            alt="RR Plots"
+            className="h-28 sm:h-36 lg:h-44 w-auto mx-auto object-contain mix-blend-screen opacity-50"
+          />
+        </div>
+
+        {/* Tagline card */}
+        <div className="w-full max-w-2xl mx-auto mb-6 sm:mb-10">
+          <div className="relative bg-white/8 backdrop-blur-md border border-white/15 rounded-2xl px-6 sm:px-8 py-5 overflow-hidden">
+            {/* Top gradient accent line */}
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-400/70 to-transparent" />
+
+            {/* Label */}
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-olive-400 animate-pulse" />
+              <span className="text-olive-400 text-xs font-bold tracking-[0.2em] uppercase">Our Promise</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-olive-400 animate-pulse" />
+            </div>
+
+            {/* Text */}
+            <p className="text-white/90 font-semibold text-base sm:text-lg lg:text-xl leading-relaxed text-center">
+              With over{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-300 to-violet-300 font-extrabold">
+                25 years of local expertise
+              </span>
+              , we provide premier real estate services that turn{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-300 to-violet-300 font-extrabold">
+                plots into homes
+              </span>{' '}
+              and investments into wealth. Whether buying or selling, our tailored approach guarantees unparalleled professionalism and personal attention.
+            </p>
+
+            {/* Bottom gradient accent line */}
+            <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-violet-400/50 to-transparent" />
+          </div>
         </div>
 
         {/* Headline */}

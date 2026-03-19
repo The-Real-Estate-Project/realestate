@@ -11,13 +11,11 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/home" className="inline-flex">
-              <div className="bg-white rounded-xl p-1.5">
-                <img
-                  src="/rrnest-logo.png"
-                  alt="RR Nest"
-                  className="h-16 w-auto object-contain"
-                />
-              </div>
+              <img
+                src="/rrplots-logo.png"
+                alt="RR Plots"
+                className="h-36 w-auto object-contain rounded-xl"
+              />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               Your trusted real estate partner in Bengaluru. Find the best residential,
@@ -49,6 +47,7 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2.5">
               {[
+                { to: '/about', label: 'About Us' },
                 { to: '/properties?category=buy', label: 'Buy Property' },
                 { to: '/properties?propertyType=residential', label: 'Residential' },
                 { to: '/properties?unitType=site', label: 'Sites' },
@@ -87,8 +86,8 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary-400 flex-shrink-0" />
-                <a href="mailto:info@rrnest.in" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  info@rrnest.in
+                <a href="mailto:rrplots@gmail.com" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  rrplots@gmail.com
                 </a>
               </li>
             </ul>
@@ -110,7 +109,7 @@ const Footer = () => {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-gray-500 text-xs">
-            © {currentYear} RR Nest. All rights reserved.
+            © {currentYear} RR Plots. All rights reserved.
           </p>
           <p className="text-gray-600 text-xs">
             Serving Bengaluru real estate since 2024

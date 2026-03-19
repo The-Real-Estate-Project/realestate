@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Varun G R – Resume</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 10.5pt;
+      color: #222;
+      background: #fff;
+      padding: 0;
+    }
+
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 56px;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+      border-bottom: 2px solid #222;
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+    }
+    .header h1 {
+      font-size: 22pt;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .header .contact {
+      font-size: 9.5pt;
+      color: #222;
+      line-height: 1.6;
+    }
+    .header .contact a { color: #1155cc; text-decoration: none; }
+    .header .contact a:hover { text-decoration: underline; }
+
+    /* ── Section titles ── */
+    h2 {
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-top: 18px;
+      margin-bottom: 6px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 2px;
+    }
+
+    /* ── Functional Expertise grid ── */
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px 30px;
+      margin-bottom: 4px;
+    }
+    .expertise-grid li {
+      list-style: disc;
+      margin-left: 18px;
+      font-size: 10.5pt;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    /* ── Demonstrated blocks ── */
+    .company-link { color: #1155cc; text-decoration: none; font-size: 10.5pt; }
+    .company-link:hover { text-decoration: underline; }
+
+    .company-dates { font-size: 10pt; color: #333; margin: 2px 0; }
+
+    .company-desc {
+      font-style: italic;
+      font-size: 10pt;
+      color: #333;
+      margin-bottom: 4px;
+      line-height: 1.55;
+    }
+
+    .role-title {
+      font-weight: 700;
+      font-size: 10.5pt;
+      margin-bottom: 4px;
+    }
+
+    .role-intro {
+      font-size: 10.5pt;
+      margin-bottom: 6px;
+      line-height: 1.55;
+    }
+
+    .bullets { padding-left: 22px; margin-bottom: 10px; }
+    .bullets li {
+      list-style: disc;
+      font-size: 10.5pt;
+      line-height: 1.6;
+      margin-bottom: 4px;
+    }
+    .bullets li b { font-weight: 700; }
+
+    /* ── Projects ── */
+    .project { margin-bottom: 12px; }
+    .project p { font-size: 10.5pt; line-height: 1.6; }
+    .project p b { font-weight: 700; }
+    .project a { color: #1155cc; text-decoration: none; }
+    .project a:hover { text-decoration: underline; }
+
+    /* ── Other Relevant Info ── */
+    .info-block { margin-top: 4px; font-size: 10.5pt; line-height: 1.7; }
+    .info-block b { font-weight: 700; }
+
+    /* ── Print ── */
+    @media print {
+      body { background: #fff; }
+      .page { padding: 28px 40px; }
+      a { color: #1155cc !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ════════════ HEADER ════════════ -->
+  <div class="header">
+    <h1>VARUN G R</h1>
+    <div class="contact">
+      <a href="#">GitHub® Profile</a>&nbsp;&nbsp;
+      varungrvv@gmail.com |&nbsp;
+      <a href="#">LinkedIn® Profile</a> |&nbsp;
+      +917026228873
+    </div>
+  </div>
+
+  <!-- ════════════ PROFESSIONAL SUMMARY ════════════ -->
+  <h2>Professional Summary</h2>
+  <p style="font-size:10.5pt;line-height:1.6;margin-bottom:4px;">
+    Java &amp; Full-Stack Developer with 3+ years of experience specializing in RESTful Web Services,
+    Spring Framework, and modern JavaScript ecosystems. Demonstrated expertise in designing and
+    developing software solutions including a disaster alert system (KSDMA), an astronomy visualization
+    application (NASA API), and a full-stack real estate listing platform (RR Nest). Led the implementation
+    of RESTful APIs with Spring Boot and Node.js/Express, enhanced security through JWT/OAuth2
+    integration, and built responsive UIs with React 18 and TailwindCSS. Deployed applications using
+    AWS Elastic Beanstalk, Docker, and Vite-based toolchains. Proficient in testing methodologies using
+    JUnit and Mockito, with experience documenting APIs through Swagger-OpenAPI. Committed to
+    continuous learning and delivering secure, high-performance applications that address real-world
+    challenges.
+  </p>
+
+  <!-- ════════════ FUNCTIONAL EXPERTISE ════════════ -->
+  <h2>Functional Expertise</h2>
+  <ul class="expertise-grid">
+    <li>Design and Development</li>
+    <li>Testing and Deployment</li>
+    <li>Teamwork and Cross-functional Communication</li>
+    <li>Corporate Training and Delivery</li>
+    <li>Creative Problem Solving / Strategic Thinking</li>
+    <li>Troubleshooting and Debugging</li>
+    <li>Full-Stack Web Development</li>
+    <li>Database Design &amp; API Integration</li>
+  </ul>
+
+  <!-- ════════════ FUNCTIONAL EXPERTISE DEMONSTRATED ════════════ -->
+  <h2>Functional Expertise Demonstrated</h2>
+
+  <!-- — Test Yantra — -->
+  <a class="company-link" href="#">Test Yantra Software</a>
+  <div class="company-dates">March 2022 – August 2023 &nbsp;|&nbsp; May 2024 – September 2025</div>
+  <p class="company-desc">
+    An IT services and consulting firm with 6000+ employees serving IT Skills Development,
+    Software Design &amp; Development CoE, Testing as a Service, and Application/Product
+    Deployment and Support.
+  </p>
+  <div class="role-title">Associate Software Engineer (Java Developer)</div>
+  <p class="role-intro">
+    Analyzes requirements, designs RESTful APIs for the Early Warning Dissemination System (EWDS),
+    leads on-site training sessions, mentored and trained many teams, and worked on internal projects.
+  </p>
+  <ul class="bullets">
+    <li><b>Design &amp; Development:</b> Led the design and development of RESTful APIs for the Early
+      Warning Dissemination System (EWDS) using Spring Boot, optimizing data retrieval and enhancing
+      user experience. Integrated JWT with OAuth2 for session-based authentication and improved
+      application security with Spring REST Security.</li>
+    <li><b>Testing &amp; Deployment:</b> Developed and maintained Unit and Integration Tests using
+      JUnit and Mockito. Deployed MySQL containers on AWS Elastic Beanstalk and documented APIs
+      using Swagger-OpenAPI.</li>
+    <li><b>Corporate Training:</b> Conducted over 40+ training sessions on professional topics and
+      technologies, mentoring teams and improving productivity.</li>
+    <li><b>Technical Troubleshooting:</b> Resolved critical bugs and collaborated with teams for
+      effective problem-solving and debugging.</li>
+    <li><b>Teamwork:</b> Worked closely with cross-functional teams to diagnose issues, develop test
+      cases, and improve project outcomes.</li>
+  </ul>
+
+  <!-- — RR Nest (Freelance) — -->
+  <span class="company-link" style="font-weight:700;">RR Nest – Real Estate Platform</span>
+  <span style="font-size:10pt; color:#333;">&nbsp;(Freelance Project)</span>
+  <div class="company-dates">2025</div>
+  <p class="company-desc">
+    A production-ready full-stack real estate listing web application serving buyers, renters, and
+    administrators, built end-to-end as a freelance engagement.
+  </p>
+  <div class="role-title">Full-Stack Developer (React + Node.js)</div>
+  <p class="role-intro">
+    Independently architected, developed, and deployed the complete platform covering frontend,
+    backend API, database design, authentication, and media management.
+  </p>
+  <ul class="bullets">
+    <li><b>Design &amp; Development:</b> Designed and built a responsive, multi-page React 18 frontend
+      (Vite + TailwindCSS 3) with property listing pages, advanced search &amp; filters (location, price
+      range, BHK, property type), property detail views, and an admin dashboard for full CRUD management
+      of listings. Implemented smooth UX with lucide-react icons and react-hot-toast notifications.</li>
+    <li><b>Backend &amp; API:</b> Developed a RESTful Node.js/Express backend with MongoDB/Mongoose
+      for data persistence. Implemented JWT-based admin authentication, secure file upload (property
+      photos &amp; floor plans served via static routes), and auto-generated property slugs. Documented
+      all endpoints with Swagger-OpenAPI (v2.0.0).</li>
+    <li><b>Deployment &amp; Tooling:</b> Configured Vite reverse proxy for seamless frontend-to-backend
+      communication, managed environment variables for production secrets, and resolved Netlify/hosting
+      deployment issues for the production release.</li>
+    <li><b>Troubleshooting &amp; Debugging:</b> Identified and resolved critical build errors, responsive
+      UI breakpoints, and search functionality bugs across desktop and mobile viewports.</li>
+  </ul>
+
+  <!-- ════════════ RELEVANT PROJECTS ════════════ -->
+  <h2>Relevant Projects</h2>
+
+  <div class="project">
+    <p>
+      <b>Early Warning Dissemination System (KSDMA):</b> Developed a disaster alert system for timely
+      notifications during emergencies. Designed and built RESTful APIs with Spring Boot to improve data
+      access and system usability. Implemented security features using JWT with OAuth2 for authentication
+      and Spring REST Security for overall protection. Created and maintained Unit and Integration Tests
+      with JUnit and Mockito to ensure system reliability. Set up MySQL containers on AWS Elastic Beanstalk
+      for deployment and documented the API structure using Swagger-OpenAPI. Worked with different teams
+      to identify issues, develop solutions, and improve system functionality. The project helps authorities
+      send warning messages to at-risk communities during natural disasters.
+    </p>
+  </div>
+
+  <div class="project">
+    <p>
+      <b>Nasa API Implementation (Remote):</b> Experience the <b>cosmos</b> with the <b>Nasa</b> API
+      Implementation project, a <b>full-stack web application</b> delivering captivating
+      <b>Astronomy Picture of the Day</b> and <b>Mars Rover Photos</b>. Developed with Spring Boot,
+      MySQL, and cutting-edge Spring Framework, it ensures security, performance, and seamless user
+      interaction. The project seamlessly integrates <b>RESTful web services</b> for fetching Astronomy
+      Pictures of the Day and Mars Rover Photos. Its Bootstrap-enhanced front-end, along with deployment
+      on <b>AWS Elastic Beanstalk</b> using Docker, promises a visually captivating and dependable
+      astronomical exploration experience. Admin controls, Swagger documentation, and rigorous JUnit
+      testing elevate this celestial journey to new heights.
+    </p>
+    <p style="margin-top:4px;">
+      <b>Credentials for the application (For Guest Users):</b> Username:- guest | Password:- guest@123
+      &nbsp;&nbsp;<a href="#">Application Link</a>
+    </p>
+  </div>
+
+  <div class="project">
+    <p>
+      <b>RR Nest – Real Estate Web Platform (Freelance):</b> Designed and developed a production-ready,
+      full-stack real estate listing platform from the ground up. The frontend is built with
+      <b>React 18, Vite, and TailwindCSS 3</b>, featuring a responsive multi-page UI with property
+      browsing, advanced search &amp; filtering (by location, price, BHK, and property type), detailed
+      property pages, and an admin dashboard. The backend is powered by <b>Node.js, Express, and
+      MongoDB (Mongoose)</b>, exposing secure <b>RESTful APIs</b> for property CRUD operations, media
+      uploads (photos &amp; floor plans), and <b>JWT-based admin authentication</b>. Property slugs are
+      auto-generated for SEO-friendly URLs. All API endpoints are documented using
+      <b>Swagger-OpenAPI v2.0.0</b>. Configured Vite proxy for local development and resolved production
+      deployment issues on Netlify.
+    </p>
+  </div>
+
+  <!-- ════════════ EDUCATION ════════════ -->
+  <h2>Education</h2>
+  <p style="font-size:10.5pt; line-height:1.7;">
+    <b>Bachelor Of Engineering (Computer Science)</b> .
+    <a class="company-link" href="#">East West Institute Of Technology</a> (Bengaluru, IN)
+  </p>
+
+  <!-- ════════════ OTHER RELEVANT INFORMATION ════════════ -->
+  <h2>Other Relevant Information</h2>
+  <div class="info-block">
+    <p><b>Additional Languages:</b> Kannada, Hindi</p>
+    <br/>
+    <p><b>Technical Skills:</b></p>
+    <p>
+      <b>Programming Languages:</b> Java, Java 8, JavaScript (ES6+)
+    </p>
+    <p>
+      <b>Frameworks &amp; Libraries:</b> Spring Boot, Spring Framework (Core, Hibernate JPA, RESTful
+      Web Services, MVC, Spring Security), Thymeleaf, React 18, Node.js, Express.js, TailwindCSS 3,
+      Vite, Lucide-React, React Hot Toast
+    </p>
+    <p>
+      <b>Databases:</b> MySQL, MongoDB (Mongoose ODM)
+    </p>
+    <p>
+      <b>Testing:</b> JUnit, Mockito, Test Containers
+    </p>
+    <p>
+      <b>Build Tools &amp; VC:</b> Maven, npm, Vite, GitHub, Postman, Swagger API, OpenAPI,
+      XML/JSON, OAuth2
+    </p>
+    <p>
+      <b>Cloud &amp; Deployment:</b> AWS Elastic Beanstalk, Docker, Netlify
+    </p>
+    <p>
+      <b>Other:</b> JWT Authentication, REST API Design, Responsive UI Design, Admin Dashboard Development
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -455,7 +455,16 @@ const PropertyDetail = () => {
           {/* Sidebar - Contact */}
           <div className="space-y-4 min-w-0">
             {/* Enquiry card */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 lg:sticky lg:top-16">
+            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden lg:sticky lg:top-16">
+              {/* Brand header */}
+              <div className="bg-indigo-950 flex items-center justify-center py-3">
+                <img
+                  src="/rrplots-logo.gif"
+                  alt="RR Plots"
+                  className="h-14 w-auto object-contain mix-blend-screen opacity-30"
+                />
+              </div>
+              <div className="p-6">
               <h3 className="font-bold text-gray-900 mb-1">Interested in this property?</h3>
               <p className="text-gray-500 text-sm mb-5">
                 Get in touch with us for more details, site visit, or pricing.
@@ -499,6 +508,7 @@ const PropertyDetail = () => {
                   </a>
                 </p>
               )}
+              </div>
             </div>
 
             {/* Property details card */}

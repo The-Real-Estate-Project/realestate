@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Phone, MessageSquare, X } from 'lucide-react';
 
 const PHONE    = '+919945450585';
-const TELEGRAM = 'rrnest';        // ← replace with actual Telegram username
+const TELEGRAM = 'rrplots';       // ← replace with actual Telegram username
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">

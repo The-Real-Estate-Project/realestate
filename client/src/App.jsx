@@ -6,6 +6,7 @@ import FloatingContact from './components/FloatingContact';
 import Home from './pages/Home';
 import PropertyListing from './pages/PropertyListing';
 import PropertyDetail from './pages/PropertyDetail';
+import AboutUs from './pages/AboutUs';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminAddProperty from './pages/AdminAddProperty';
@@ -57,6 +58,15 @@ const App = () => {
         element={
           <PublicLayout>
             <PropertyDetail />
+          </PublicLayout>
+        }
+      />
+
+      <Route
+        path="/about"
+        element={
+          <PublicLayout>
+            <AboutUs />
           </PublicLayout>
         }
       />

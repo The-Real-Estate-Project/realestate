@@ -92,6 +92,15 @@ const PropertyListing = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Brand banner */}
+      <div className="bg-indigo-950 flex items-center justify-center py-3">
+        <img
+          src="/rrplots-logo.gif"
+          alt="RR Plots"
+          className="h-14 sm:h-16 w-auto object-contain mix-blend-screen opacity-30"
+        />
+      </div>
+
       {/* Sub-header */}
       <div className="bg-white border-b border-gray-200 sticky top-16 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
