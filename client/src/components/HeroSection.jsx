@@ -80,7 +80,7 @@ const HeroSection = () => {
         {/* Brand Logo */}
         <div className="mb-4 sm:mb-6">
           <img
-            src="/rrplots-logo.gif"
+            src="/rrnest-logo.png"
             alt="RR Plots"
             className="h-28 sm:h-36 lg:h-44 w-auto mx-auto object-contain mix-blend-screen opacity-50"
           />

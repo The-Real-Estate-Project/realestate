@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Phone, MessageSquare, X } from 'lucide-react';
 
+const DISPLAY_PHONE = '+91 9945450585';
+
 const PHONE    = '+919945450585';
 const TELEGRAM = 'rrplots';       // ← replace with actual Telegram username
 
@@ -51,6 +53,24 @@ const FloatingContact = () => {
   const [open, setOpen] = useState(false);
 
   return (
+    <>
+      {/* ── Left-side flashing phone tab ─────────────────────────── */}
+      <a
+        href={`tel:${PHONE}`}
+        className="phone-flash-tab fixed left-0 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-2 px-2.5 py-4 rounded-r-2xl cursor-pointer select-none"
+        aria-label={`Call us at ${DISPLAY_PHONE}`}
+      >
+        <span className="phone-ring-icon text-white">
+          <Phone className="w-5 h-5" />
+        </span>
+        <span
+          className="text-white font-bold text-xs tracking-widest whitespace-nowrap"
+          style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)', letterSpacing: '0.12em' }}
+        >
+          {DISPLAY_PHONE}
+        </span>
+      </a>
+
     <div className="fixed bottom-6 right-4 z-50 flex flex-col items-end gap-3 max-w-[calc(100vw-1rem)]">
 
       {/* Contact option buttons — slide up when open */}
@@ -90,6 +110,7 @@ const FloatingContact = () => {
         )}
       </button>
     </div>
+    </>
   );
 };
 
